@@ -1,0 +1,27 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment variables (not a good idea to commit sensitive data like API keys)
+.env
+
+# Build files (if you’re using a build step)
+dist/
+build/
+
+# Ignore OS generated files (like MacOS or Windows)
+.DS_Store
+Thumbs.db
+
+# Ignore IDE and editor config files
+.vscode/
+.idea/
+
+# Test coverage and reports
+coverage/
+
+# Other files to ignore
+*.test.js

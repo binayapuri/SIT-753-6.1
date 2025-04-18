@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DIRECTORY_PATH = '/path/to/your/code'
+        DIRECTORY_PATH = '.'
         TESTING_ENVIRONMENT = 'Test_Environment'
         PRODUCTION_ENVIRONMENT = 'Binaya_Production'
     }
@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/yourusername/express-app.git'
+                git 'https://github.com/binayapuri/SIT-753-6.1.git'
             }
         }
 
