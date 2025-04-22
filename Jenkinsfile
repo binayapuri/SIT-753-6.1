@@ -8,46 +8,42 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/binayapuri/SIT-753-6.1.git'
-            }
-        }
-
         stage('Build') {
             steps {
-                echo "Build step: Fetching and compiling the app"
-                sh 'npm install'
+                echo "Fetch the source code from the directory path specified by the environment variable: ${env.DIRECTORY_PATH}"
+                echo "Compile the code and generate any necessary artefacts"
             }
         }
 
         stage('Test') {
             steps {
-                echo "Test step: Running tests"
-                // Optional: Run your tests here
+                echo "Unit tests"
+                echo "Integration tests"
+            }
+        }
+
+        stage('Code Quality Check') {
+            steps {
+                echo "Check the quality of the code"
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "Deploying the application to testing environment"
-                // Deploy the app - for simplicity, just printing
-                sh 'echo Deploying app to ${TESTING_ENVIRONMENT}'
+                echo "Deploy the application to a testing environment specified by the environment variable: ${env.TESTING_ENVIRONMENT}"
             }
         }
 
         stage('Approval') {
             steps {
-                echo "Waiting for approval"
-                input "Approve deployment to Production?"
+                echo "Waiting for approval..."
+                sleep(time: 10, unit: 'SECONDS') // Simulating manual approval
             }
         }
 
         stage('Deploy to Production') {
             steps {
-                echo "Deploying app to production environment ${PRODUCTION_ENVIRONMENT}"
-                // Here you would deploy your app, e.g., using Docker or SSH to a server
-                sh 'echo Deploying to production'
+                echo "Deploying the application to production environment: ${env.PRODUCTION_ENVIRONMENT}"
             }
         }
     }
