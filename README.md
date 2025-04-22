@@ -46,8 +46,15 @@ docker exec -u 0 -it jenkins-sit753 bash
 apt-get update
 apt-get install -y docker.io
 
+## Add the jenkins user to the docker group:
+groupadd docker || true
+usermod -aG docker jenkins
+
 
 ## exit
 exit
+
+## restart
+docker restart jenkins-sit753
 
 d7785965c16a6d74865f79c5b01b3baeb3ed8449ee9a3bc815a8c87b7ec8cebf
