@@ -31,11 +31,21 @@ docker run -p 8080:8080 -p 50000:50000 --name jenkins-sit753 \
 
 ## with pipeline
 docker run -d \
-  --name jenkins-sit753 \
   -p 8080:8080 -p 50000:50000 \
+  --name jenkins-sit753 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v jenkins_home:/var/jenkins_home \
+  --user root \
   jenkins/jenkins:lts
+
+
+
+
+
+
+## access jenkins pw
+
+docker exec jenkins-sit753 cat /var/jenkins_home/secrets/initialAdminPassword
 
 
 ## open jenkins bash
